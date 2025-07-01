@@ -54,20 +54,15 @@
             >;
 
             sensor-bindings = <
-                &inc_dec_kp C_VOL_UP C_VOL_DN   // Encoder 1 rotation (D6/D7)
-                &inc_dec_kp PG_UP PG_DN         // Encoder 2 rotation (D8/D9)
-                &inc_dec_kp LEFT RIGHT          // Encoder 3 rotation (D10/A0)
-                &inc_dec_kp UP DOWN             // Encoder 4 rotation (A1/A2)
-                >;
-
-            encoder_sw_binding {
-                    bindings = <
-                &kp C_MUTE                      // Encoder 1 click (A3)
-                &kp ENTER                       // Encoder 2 click (A4)
-                &kp ESC                         // Encoder 3 click (A5)
-                &kp TAB                         // Encoder 4 click (A6)
+                &inc_dec_kp C_VOL_UP C_VOL_DN   // Encoder 1 rotation
+                &inc_dec_kp PG_UP PG_DN         // Encoder 2 rotation
+                &inc_dec_kp LEFT RIGHT          // Encoder 3 rotation
+                &inc_dec_kp UP DOWN             // Encoder 4 rotation
+                &kp C_MUTE                      // Encoder 1 click
+                &kp ENTER                       // Encoder 2 click
+                &kp ESC                         // Encoder 3 click
+                &kp TAB                         // Encoder 4 click
             >;
         };
-    };
     };
 };

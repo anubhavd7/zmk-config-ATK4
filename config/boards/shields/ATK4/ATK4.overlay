@@ -24,9 +24,9 @@
         steps = <24>;
     };
     encoder_1_sw: encoder_1_sw {
-        compatible = "zmk,behavior-sensor-rotate";
-        bindings = <&kp>, <&kp>;
-        triggers-per-rotation = <12>;
+        compatible = "zmk,keymap-sensor";
+        #sensor-binding-cells = <1>;
+        button-gpios = <&pro_micro 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
     };
 
     // Encoder 2 (D8/D9) + Switch (A4)
@@ -37,9 +37,9 @@
         steps = <24>;
     };
     encoder_2_sw: encoder_2_sw {
-        compatible = "zmk,behavior-sensor-rotate";
-        bindings = <&kp>, <&kp>;
-        triggers-per-rotation = <12>;
+        compatible = "zmk,keymap-sensor";
+        #sensor-binding-cells = <1>;
+        button-gpios = <&pro_micro 18 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
     };
 
     // Encoder 3 (D10/A0) + Switch (A5)
@@ -50,9 +50,9 @@
         steps = <24>;
     };
     encoder_3_sw: encoder_3_sw {
-        compatible = "zmk,behavior-sensor-rotate";
-        bindings = <&kp>, <&kp>;
-        triggers-per-rotation = <12>;
+        compatible = "zmk,keymap-sensor";
+        #sensor-binding-cells = <1>;
+        button-gpios = <&pro_micro 19 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
     };
 
     // Encoder 4 (A1/A2) + Switch (A6)
@@ -63,8 +63,17 @@
         steps = <24>;
     };
     encoder_4_sw: encoder_4_sw {
-        compatible = "zmk,behavior-sensor-rotate";
-        bindings = <&kp>, <&kp>;
+        compatible = "zmk,keymap-sensor";
+        #sensor-binding-cells = <1>;
+        button-gpios = <&pro_micro 20 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+    };
+
+    sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <
+            &encoder_1 &encoder_2 &encoder_3 &encoder_4
+            &encoder_1_sw &encoder_2_sw &encoder_3_sw &encoder_4_sw
+        >;
         triggers-per-rotation = <12>;
     };
 };
