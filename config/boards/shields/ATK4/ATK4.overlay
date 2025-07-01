@@ -5,77 +5,85 @@
 
     default_kscan: kscan {
         compatible = "zmk,kscan-gpio-matrix";
-        label = "MATRIX_SCAN";
-
+        // Removed deprecated label
         row-gpios = 
             <&pro_micro 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  // D0
             <&pro_micro 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  // D1
             <&pro_micro 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;  // D2
-
         col-gpios = 
             <&pro_micro 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  // D3
             <&pro_micro 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  // D4
             <&pro_micro 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;  // D5
-
         diode-direction = "col2row";
     };
 
     // Encoder 1 (D6/D7) + Switch (A3)
     encoder_1: encoder_1 {
         compatible = "alps,ec11";
-        a-gpios = <&pro_micro 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;  // D6
-        b-gpios = <&pro_micro 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;  // D7
+        a-gpios = <&pro_micro 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&pro_micro 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         steps = <24>;
     };
     encoder_1_sw: encoder_1_sw {
-        compatible = "zmk,keymap-sensors";
-        gpios = <&pro_micro 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; // A3
+        compatible = "zmk,keymap-sensor";  // Changed to singular
+        button-gpios = <&pro_micro 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; // Changed property
+        triggers = <1>;  // Required
+        sensor = <&encoder_1>;  // Links to parent encoder
     };
 
     // Encoder 2 (D8/D9) + Switch (A4)
     encoder_2: encoder_2 {
         compatible = "alps,ec11";
-        a-gpios = <&pro_micro 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;  // D8
-        b-gpios = <&pro_micro 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;  // D9
+        a-gpios = <&pro_micro 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&pro_micro 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         steps = <24>;
     };
     encoder_2_sw: encoder_2_sw {
-        compatible = "zmk,keymap-sensors";
-        gpios = <&pro_micro 18 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; // A4
+        compatible = "zmk,keymap-sensor";
+        button-gpios = <&pro_micro 18 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        triggers = <1>;
+        sensor = <&encoder_2>;
     };
 
     // Encoder 3 (D10/A0) + Switch (A5)
     encoder_3: encoder_3 {
         compatible = "alps,ec11";
-        a-gpios = <&pro_micro 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // D10
-        b-gpios = <&pro_micro 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // A0
+        a-gpios = <&pro_micro 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&pro_micro 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         steps = <24>;
     };
     encoder_3_sw: encoder_3_sw {
-        compatible = "zmk,keymap-sensors";
-        gpios = <&pro_micro 19 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; // A5
+        compatible = "zmk,keymap-sensor";
+        button-gpios = <&pro_micro 19 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        triggers = <1>;
+        sensor = <&encoder_3>;
     };
 
     // Encoder 4 (A1/A2) + Switch (A6)
     encoder_4: encoder_4 {
         compatible = "alps,ec11";
-        a-gpios = <&pro_micro 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // A1
-        b-gpios = <&pro_micro 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // A2
+        a-gpios = <&pro_micro 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&pro_micro 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         steps = <24>;
     };
     encoder_4_sw: encoder_4_sw {
-        compatible = "zmk,keymap-sensors";
-        gpios = <&pro_micro 20 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; // A6
+        compatible = "zmk,keymap-sensor";
+        button-gpios = <&pro_micro 20 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        triggers = <1>;
+        sensor = <&encoder_4>;
     };
 
     sensors {
         compatible = "zmk,keymap-sensors";
-        sensors = <&encoder_1 &encoder_2 &encoder_3 &encoder_4>;
+        sensors = <
+            &encoder_1 &encoder_2 &encoder_3 &encoder_4
+            &encoder_1_sw &encoder_2_sw &encoder_3_sw &encoder_4_sw
+        >;
         triggers-per-rotation = <12>;
     };
 };
 
-// Activate all components
+// Activation remains the same
 &encoder_1 { status = "okay"; };
 &encoder_2 { status = "okay"; };
 &encoder_3 { status = "okay"; };
