@@ -61,14 +61,15 @@
             >;
 
             // Click bindings for each encoder switch
-            encoder-switch-bindings = <
+            encoder-switch-bindings {
+                bindings= <
                 &kp C_MUTE      // Encoder 1 click (A3)
                 &kp ENTER       // Encoder 2 click (A4)
                 &kp ESC         // Encoder 3 click (A5)
                 &kp TAB         // Encoder 4 click (A6)
             >;
         };
-
         
     };
+};
 };
