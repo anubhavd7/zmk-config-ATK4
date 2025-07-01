@@ -17,7 +17,7 @@
             <&pro_micro 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  // D4
             <&pro_micro 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;  // D5
 
-        diode-direction = "COL2ROW";
+        diode-direction = "col2row";
     };
 
     // Encoder 1 (D6/D7)
