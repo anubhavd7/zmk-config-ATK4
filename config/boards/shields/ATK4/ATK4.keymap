@@ -5,6 +5,7 @@
 
 / {
     macros {
+        // Your existing macros remain unchanged
         finder_home: finder_home {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -47,21 +48,23 @@
         compatible = "zmk,keymap";
 
         default_layer {
+            // Your 3x3 matrix keys remain unchanged
             bindings = <
                 &finder_home       &finder_desktop      &finder_downloads
                 &kp C_VOL_UP       &kp C_MUTE           &kp C_VOL_DN
                 &kp C_PREV         &kp C_PLAY_PAUSE     &kp C_NEXT
             >;
 
+            // Fixed encoder bindings (rotation + click)
             sensor-bindings = <
-                &inc_dec_kp C_VOL_UP C_VOL_DN   // Encoder 1 rotation (D6/D7)
-                &inc_dec_kp PG_UP PG_DN         // Encoder 2 rotation (D8/D9)
-                &inc_dec_kp LEFT RIGHT          // Encoder 3 rotation (D10/A0)
-                &inc_dec_kp UP DOWN             // Encoder 4 rotation (A1/A2)
-                &kp C_MUTE                      // Encoder 1 click (A3)
-                &kp ENTER                       // Encoder 2 click (A4)
-                &kp ESC                         // Encoder 3 click (A5)
-                &kp TAB                         // Encoder 4 click (A6)
+                &inc_dec_kp C_VOL_UP C_VOL_DN   // Enc1 rotate
+                &inc_dec_kp PG_UP PG_DN         // Enc2 rotate
+                &inc_dec_kp LEFT RIGHT          // Enc3 rotate
+                &inc_dec_kp UP DOWN             // Enc4 rotate
+                &kp C_MUTE                      // Enc1 click
+                &kp ENTER                       // Enc2 click
+                &kp ESC                         // Enc3 click
+                &kp TAB                         // Enc4 click
             >;
         };
     };
