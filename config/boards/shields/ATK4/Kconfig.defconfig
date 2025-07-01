@@ -1,0 +1,6 @@
+if SHIELD_ATK4
+
+config ZMK_KEYBOARD_NAME
+    default "ATK4"
+
+endif
