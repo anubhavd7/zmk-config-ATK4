@@ -8,8 +8,8 @@
         finder_home: finder_home {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <40>;
-            tap-ms = <40>;
+            wait-ms = <10>;  // Reduced for faster response
+            tap-ms = <10>;
             bindings = 
                 <&macro_press &kp LEFT_COMMAND>,
                 <&macro_press &kp LEFT_SHIFT>,
@@ -20,8 +20,8 @@
         finder_desktop: finder_desktop {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <40>;
-            tap-ms = <40>;
+            wait-ms = <10>;
+            tap-ms = <10>;
             bindings = 
                 <&macro_press &kp LEFT_COMMAND>,
                 <&macro_press &kp LEFT_SHIFT>,
@@ -32,8 +32,8 @@
         finder_downloads: finder_downloads {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <40>;
-            tap-ms = <40>;
+            wait-ms = <10>;
+            tap-ms = <10>;
             bindings = 
                 <&macro_press &kp LEFT_COMMAND>,
                 <&macro_press &kp LEFT_ALT>,
@@ -60,15 +60,36 @@
                 &inc_dec_kp UP DOWN             // Encoder 4 (A1/A2)
             >;
 
-            // Encoder click bindings (if your encoders have push-buttons)
-            encoder_sw_bindings {
-                bindings = <
-                    &kp C_MUTE     // Encoder 1 click
-                    &kp ENTER      // Encoder 2 click
-                    &kp ESC        // Encoder 3 click
-                    &kp TAB        // Encoder 4 click
-                >;
-            };
+            // Click bindings for each encoder switch
+            encoder-switch-bindings = <
+                &kp C_MUTE      // Encoder 1 click (A3)
+                &kp ENTER       // Encoder 2 click (A4)
+                &kp ESC         // Encoder 3 click (A5)
+                &kp TAB         // Encoder 4 click (A6)
+            >;
+        };
+
+        // Optional: Add a layer for encoder alternate functions
+        fn_layer {
+            bindings = <
+                &trans          &trans              &trans
+                &kp C_BRI_UP    &kp C_SCREENSHOT   &kp C_BRI_DN
+                &kp C_FWD       &kp C_BTN3         &kp C_BWD
+            >;
+
+            sensor-bindings = <
+                &inc_dec_kp C_WH_U C_WH_D    // Encoder 1: Mouse wheel
+                &inc_dec_kp C_FWD C_BWD      // Encoder 2: Browser nav
+                &inc_dec_kp C_MS_U C_MS_D    // Encoder 3: Mouse vert
+                &inc_dec_kp C_MS_L C_MS_R    // Encoder 4: Mouse horiz
+            >;
+
+            encoder-switch-bindings = <
+                &kp C_BTN1      // Encoder 1 click
+                &kp C_BTN2      // Encoder 2 click
+                &kp C_BTN3      // Encoder 3 click
+                &kp C_BTN4      // Encoder 4 click
+            >;
         };
     };
 };

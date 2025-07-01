@@ -20,47 +20,67 @@
         diode-direction = "col2row";
     };
 
-    // Encoder 1 (D6/D7)
+    // Encoder 1 (D6/D7) + Switch (A3)
     encoder_1: encoder_1 {
         compatible = "alps,ec11";
         a-gpios = <&pro_micro 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;  // D6
         b-gpios = <&pro_micro 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;  // D7
         steps = <24>;
     };
+    encoder_1_sw: encoder_1_sw {
+        compatible = "zmk,keymap-sensors";
+        gpios = <&pro_micro 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; // A3
+    };
 
-    // Encoder 2 (D8/D9)
+    // Encoder 2 (D8/D9) + Switch (A4)
     encoder_2: encoder_2 {
         compatible = "alps,ec11";
         a-gpios = <&pro_micro 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;  // D8
         b-gpios = <&pro_micro 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;  // D9
         steps = <24>;
     };
+    encoder_2_sw: encoder_2_sw {
+        compatible = "zmk,keymap-sensors";
+        gpios = <&pro_micro 18 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; // A4
+    };
 
-    // Encoder 3 (D10/A0)
+    // Encoder 3 (D10/A0) + Switch (A5)
     encoder_3: encoder_3 {
         compatible = "alps,ec11";
         a-gpios = <&pro_micro 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // D10
         b-gpios = <&pro_micro 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // A0
         steps = <24>;
     };
+    encoder_3_sw: encoder_3_sw {
+        compatible = "zmk,keymap-sensors";
+        gpios = <&pro_micro 19 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; // A5
+    };
 
-    // Encoder 4 (A1/A2)
+    // Encoder 4 (A1/A2) + Switch (A6)
     encoder_4: encoder_4 {
         compatible = "alps,ec11";
         a-gpios = <&pro_micro 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // A1
         b-gpios = <&pro_micro 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // A2
         steps = <24>;
     };
+    encoder_4_sw: encoder_4_sw {
+        compatible = "zmk,keymap-sensors";
+        gpios = <&pro_micro 20 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; // A6
+    };
 
     sensors {
         compatible = "zmk,keymap-sensors";
         sensors = <&encoder_1 &encoder_2 &encoder_3 &encoder_4>;
-        triggers-per-rotation = <12>; // Adjust sensitivity here
+        triggers-per-rotation = <12>;
     };
 };
 
-// Activate all encoders
+// Activate all components
 &encoder_1 { status = "okay"; };
 &encoder_2 { status = "okay"; };
 &encoder_3 { status = "okay"; };
 &encoder_4 { status = "okay"; };
+&encoder_1_sw { status = "okay"; };
+&encoder_2_sw { status = "okay"; };
+&encoder_3_sw { status = "okay"; };
+&encoder_4_sw { status = "okay"; };
