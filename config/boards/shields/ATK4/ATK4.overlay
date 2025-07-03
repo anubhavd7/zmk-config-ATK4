@@ -36,15 +36,15 @@
         steps = <24>;
     };
 
-    // Encoder 3 (D10/D11)
+    // Encoder 3 (D10/D16)
     encoder_3: encoder_3 {
         compatible = "alps,ec11";
-        a-gpios = <&pro_micro 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // D10
-        b-gpios = <&pro_micro 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // D16
+        a-gpios = <&pro_micro 18 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // D10
+        b-gpios = <&pro_micro 19 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // D16
         steps = <24>;
     };
 
-    // Encoder 4 (D12/D13)
+    // Encoder 4 (D14/D15)
     encoder_4: encoder_4 {
         compatible = "alps,ec11";
         a-gpios = <&pro_micro 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // D14
