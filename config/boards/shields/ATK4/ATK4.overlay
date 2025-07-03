@@ -36,7 +36,7 @@
         steps = <24>;
     };
 
-    // Encoder 3 (D10/A0)
+    // Encoder 3 (D10/D11)
     encoder_3: encoder_3 {
         compatible = "alps,ec11";
         a-gpios = <&pro_micro 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // D10
@@ -44,7 +44,7 @@
         steps = <24>;
     };
 
-    // Encoder 4 (A1/A2)
+    // Encoder 4 (D12/D13)
     encoder_4: encoder_4 {
         compatible = "alps,ec11";
         a-gpios = <&pro_micro 12 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // D12
