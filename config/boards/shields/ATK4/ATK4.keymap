@@ -54,7 +54,7 @@
             >;
 
             sensor-bindings = <
-                &inc_dec_kp C_VOL_UP C_VOL_DN   // Encoder 1 (D6/D7)
+                &inc_dec_kp K_VOLUME_UP K_VOLUME_DOWN   // Encoder 1 (D6/D7)
                 &inc_dec_kp PG_UP PG_DN         // Encoder 2 (D8/D9)
                 &inc_dec_kp LEFT RIGHT          // Encoder 3 (D10/D11)
                 &inc_dec_kp UP DOWN             // Encoder 4 (D12/D13)
