@@ -40,15 +40,15 @@
     encoder_3: encoder_3 {
         compatible = "alps,ec11";
         a-gpios = <&pro_micro 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // D10
-        b-gpios = <&pro_micro 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // A0
+        b-gpios = <&pro_micro 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // D11
         steps = <24>;
     };
 
     // Encoder 4 (A1/A2)
     encoder_4: encoder_4 {
         compatible = "alps,ec11";
-        a-gpios = <&pro_micro 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // A1
-        b-gpios = <&pro_micro 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // A2
+        a-gpios = <&pro_micro 12 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // D12
+        b-gpios = <&pro_micro 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // D13
         steps = <24>;
     };
 
