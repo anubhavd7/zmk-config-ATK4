@@ -14,8 +14,8 @@
 
         col-gpios = 
             <&pro_micro 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  // D3
-            <&pro_micro 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  // D4
-            <&pro_micro 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;  // D5
+            <&pro_micro 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  // D4
+            <&pro_micro 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;  // D5
 
         diode-direction = "col2row";
     };
@@ -23,8 +23,8 @@
     // Encoder 1 (D6/D7)
     encoder_1: encoder_1 {
         compatible = "alps,ec11";
-        a-gpios = <&pro_micro 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;  // D6
-        b-gpios = <&pro_micro 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;  // D7
+        a-gpios = <&pro_micro 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;  // D6
+        b-gpios = <&pro_micro 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;  // D7
         steps = <24>;
     };
 
