@@ -51,7 +51,7 @@
                 &finder_home       &finder_desktop      &tog 1            &none 
                 &kp C_VOL_UP       &kp C_MUTE           &kp C_VOL_DN      &none 
                 &kp C_PREV         &kp C_PLAY_PAUSE     &kp C_NEXT        &none 
-                &LEFT_SHIFT        &LEFT_GUI            &C_BRIGHTNESS_INC        &C_BRIGHTNESS_DEC
+                &kpLEFT_SHIFT        &kpLEFT_GUI            &kpC_BRIGHTNESS_INC        &kpC_BRIGHTNESS_DEC
             >;
         };
             layer_1 {
@@ -59,7 +59,7 @@
                 &bootloader        &none          &tog 0         &none 
                 &none              &none          &bt BT_CLR     &none 
                 &bt BT_SEL 0       &bt BT_SEL 1   &kp C_MUTE     &none 
-                &LEFT_SHIFT        &LEFT_GUI      &C_BRIGHTNESS_INC     &C_BRIGHTNESS_DEC
+                &kpLEFT_SHIFT        &kpLEFT_GUI      &kpC_BRIGHTNESS_INC     &kpC_BRIGHTNESS_DEC
             >;
             };
             sensor-bindings = <
