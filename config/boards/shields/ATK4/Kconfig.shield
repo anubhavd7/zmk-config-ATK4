@@ -1,0 +1,7 @@
+config SHIELD_ATK4
+    def_bool $(shields_list_contains,ATK4)
+
+    config ZMK_RGB_UNDERGLOW_LED_COUNT
+    int "Number of RGB underglow LEDs"
+    default 1
+    depends on ZMK_RGB_UNDERGLOW
